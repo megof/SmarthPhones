@@ -1,19 +1,15 @@
 import "dotenv/config";
 import "./DataBase/conectDb.js";
 import express from "express";
-import cors from 'cors';
+import MarkRouter from "./Routes/MarkRoute.js"
 
 const app = express();
 
-const whitheList = ['http://localhost:8080', '*'];
 
-app.use(cors({
-    origin: (origin, callback) => {
-        if(whitheList.includes(origin)){
-            return callback(null, origin);
-        }else{
-            return callback('Error cors origin: ' + origin + ' no autorizado')
-        }
-    }
-}))
 
+app.use(express.json());
+
+app.use('/api/v1/mark', MarkRouter);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("😎😎😉 http://localhost:" + PORT));

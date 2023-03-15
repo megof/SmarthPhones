@@ -4,5 +4,5 @@ try {
     await mongoose.connect(process.env.URI_MONGO)
     console.log("Connected")
 } catch (error) {
-    console.log("Mb connection error: "+error)
+    console.log("Mb connection error: " + error)
 }

@@ -92,7 +92,7 @@ export const DeleteMark = async (req, res) => {
         const mark = await Marks.findById(_id);
         if (!mark) {
             return res.status(400).json({
-                error: "Marks with ID " + _id + "- not found, could not be deleted "
+                error: "Marks with ID: " + _id + " - not found, could not be deleted "
             });
         }
         await Marks.findByIdAndRemove(_id);
