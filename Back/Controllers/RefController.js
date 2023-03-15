@@ -1,6 +1,6 @@
 import { Refs } from "../Models/Ref.js";
 
-// Add Mark
+// Add Ref
 
 export const AddRef = async (req, res) => {
     try {
@@ -18,7 +18,7 @@ export const AddRef = async (req, res) => {
     }
 }
 
-// Find Mark
+// Find Ref
 
 export const FindRef = async (req, res) => {
     const { _id } = req.body;
@@ -38,7 +38,7 @@ export const FindRef = async (req, res) => {
     }
 }
 
-// All Mark
+// All Ref
 
 export const FindAllRef = async (req, res) => {
     try {
@@ -60,7 +60,7 @@ export const FindAllRef = async (req, res) => {
     }
 };
 
-// Update Mark
+// Update Ref
 
 export const UpdateRef = async (req, res) => {
     const { _id, name } = req.body;
@@ -77,14 +77,14 @@ export const UpdateRef = async (req, res) => {
             ok: 'Ref modified'
         });
     } catch (error) {
-        console('Error UMark: ', error);
+        console('Error URef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
     }
 };
 
-// Delete Mark
+// Delete Ref
 
 export const DeleteRef = async (req, res) => {
     const _id = req.body;
