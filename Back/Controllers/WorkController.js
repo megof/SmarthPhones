@@ -4,8 +4,8 @@ import { Works } from "../Models/Works.js";
 
 export const AddWork = async (req, res) => {
     try {
-        const { name, id_employee, id_phone, date, Observation } = req.body;
-        const work = new Works({ name, id_employee, id_phone, date, Observation });
+        const { id_employee, id_phone, date, Observation } = req.body;
+        const work = new Works({ id_employee, id_phone, date, Observation });
         await work.save();
         return res.status(200).json({
             ok: 'New Work added'
@@ -31,7 +31,7 @@ export const FindWork = async (req, res) => {
         }
         return res.json(work);
     } catch (error) {
-        console('Error RWork: ', error);
+        console.log('Error RWork: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -53,7 +53,7 @@ export const FindAllWork = async (req, res) => {
         });
 
     } catch (error) {
-        console('Error RAWork: ', error);
+        console.log('Error RAWork: ', error);
         return res.status(500).json({
             error: 'Server error'
         });

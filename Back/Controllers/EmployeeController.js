@@ -11,7 +11,7 @@ export const AddEmployee = async (req, res) => {
             ok: 'New Employee added'
         });
     } catch (error) {
-        console('Error CEmployee: ', error);
+        console.log('Error CEmployee: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -31,7 +31,7 @@ export const FindEmployee = async (req, res) => {
         }
         return res.json(employee);
     } catch (error) {
-        console('Error REmployee: ', error);
+        console.log('Error REmployee: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -53,7 +53,7 @@ export const FindAllEmployee = async (req, res) => {
         });
 
     } catch (error) {
-        console('Error RAEmployee: ', error);
+        console.log('Error RAEmployee: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -77,7 +77,7 @@ export const UpdateEmployee = async (req, res) => {
             ok: 'Employee modified'
         });
     } catch (error) {
-        console('Error UEmployee: ', error);
+        console.log('Error UEmployee: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -100,7 +100,7 @@ export const DeleteEmployee = async (req, res) => {
             ok: 'Deleted Employee'
         });
     } catch (error) {
-        console('Error DEmployee: ', error);
+        console.log('Error DEmployee: ', error);
         return res.status(500).json({
             error: 'Server error'
         });

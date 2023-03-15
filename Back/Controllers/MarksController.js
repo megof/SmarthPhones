@@ -11,7 +11,7 @@ export const AddMark = async (req, res) => {
             ok: 'New Mark added'
         });
     } catch (error) {
-        console('Error CMark: ', error);
+        console.log('Error CMark: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -31,7 +31,7 @@ export const FindMark = async (req, res) => {
         }
         return res.json(mark);
     } catch (error) {
-        console('Error RMark: ', error);
+        console.log('Error RMark: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -53,7 +53,7 @@ export const FindAllMark = async (req, res) => {
         });
 
     } catch (error) {
-        console('Error RAMark: ', error);
+        console.log('Error RAMark: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -77,7 +77,7 @@ export const UpdateMark = async (req, res) => {
             ok: 'Mark modified'
         });
     } catch (error) {
-        console('Error UMark: ', error);
+        console.log('Error UMark: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -100,7 +100,7 @@ export const DeleteMark = async (req, res) => {
             ok: 'Deleted Mark'
         });
     } catch (error) {
-        console('Error DMark: ', error);
+        console.log('Error DMark: ', error);
         return res.status(500).json({
             error: 'Server error'
         });

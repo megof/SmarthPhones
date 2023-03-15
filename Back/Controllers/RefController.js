@@ -11,7 +11,7 @@ export const AddRef = async (req, res) => {
             ok: 'New Ref added'
         });
     } catch (error) {
-        console('Error CRef: ', error);
+        console.log('Error CRef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -31,7 +31,7 @@ export const FindRef = async (req, res) => {
         }
         return res.json(ref);
     } catch (error) {
-        console('Error RRef: ', error);
+        console.log('Error RRef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -53,7 +53,7 @@ export const FindAllRef = async (req, res) => {
         });
 
     } catch (error) {
-        console('Error RARef: ', error);
+        console.log('Error RARef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -77,7 +77,7 @@ export const UpdateRef = async (req, res) => {
             ok: 'Ref modified'
         });
     } catch (error) {
-        console('Error URef: ', error);
+        console.log('Error URef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -100,7 +100,7 @@ export const DeleteRef = async (req, res) => {
             ok: 'Deleted Ref'
         });
     } catch (error) {
-        console('Error DRef: ', error);
+        console.log('Error DRef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });

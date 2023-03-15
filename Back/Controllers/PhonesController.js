@@ -11,7 +11,7 @@ export const AddPhone = async (req, res) => {
             ok: 'New Phone added'
         });
     } catch (error) {
-        console('Error CPhone: ', error);
+        console.log('Error CPhone: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -31,7 +31,7 @@ export const FindPhone = async (req, res) => {
         }
         return res.json(phone);
     } catch (error) {
-        console('Error RPhone: ', error);
+        console.log('Error RPhone: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -77,7 +77,7 @@ export const UpdatePhone = async (req, res) => {
             ok: 'Phone modified'
         });
     } catch (error) {
-        console('Error UPhone: ', error);
+        console.log('Error UPhone: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -100,7 +100,7 @@ export const DeletePhone = async (req, res) => {
             ok: 'Deleted Phone'
         });
     } catch (error) {
-        console('Error DPhone: ', error);
+        console.log('Error DPhone: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
