@@ -11,7 +11,7 @@ export const AddWork = async (req, res) => {
             ok: 'New Work added'
         });
     } catch (error) {
-        console('Error CWork: ', error);
+        console.log('Error CWork: ', error);
         return res.status(500).json({
             error: 'Server error'
         });

@@ -14,7 +14,7 @@ router.post(
             .isLength({ min: 10 }),
     ],
     AddPhone,
-)
+);
 
 router.get('/FindPhone', FindPhone);
 router.get('/FindAllPhone', FindAllPhone);

@@ -5,27 +5,27 @@ const PhoneSchema = new Schema(
         name: {
             type: String,
             required: true,
-        }, 
-        imei:{
+        },
+        imei: {
             type: Number,
             required: true,
             trim: true,
         },
-        id_mark:{
+        id_mark: {
             type: String,
             required: true,
             trim: true,
         },
-        id_ref:{
+        id_ref: {
             type: String,
             required: true,
             trim: true,
         },
-        description:{
+        description: {
             type: String,
             required: true,
         },
-        status:{
+        status: {
             type: String,
             required: true,
             trim: true,
@@ -36,4 +36,4 @@ const PhoneSchema = new Schema(
     },
 );
 
-export const Phone = model('phone', PhoneSchema);
+export const Phones = model('phone', PhoneSchema);

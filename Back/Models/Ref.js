@@ -13,4 +13,4 @@ const RefSchema = new Schema(
     },
 );
 
-export const Ref = model('ref', RefSchema);
+export const Refs = model('ref', RefSchema);

@@ -1,6 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
-import { AddRef, FindRef, FindAllRef, UpdateRef, DeleteRef} from "../Controllers/RefController.js";
+import { AddRef, FindRef, FindAllRef, UpdateRef, DeleteRef } from "../Controllers/RefController.js";
 import { validationResults } from "../Middlewares/RefValidate.js";
 
 const router = express.Router();
@@ -14,7 +14,7 @@ router.post(
     ],
     validationResults,
     AddRef,
-)
+);
 
 router.get('/FindRef', FindRef);
 router.get('/FindAllRef', FindAllRef);

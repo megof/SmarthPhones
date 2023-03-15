@@ -14,7 +14,7 @@ router.post(
     ],
     validationResults,
     AddMark,
-)
+);
 
 router.get('/FindMark', FindMark);
 router.get('/FindAllMark', FindAllMark);

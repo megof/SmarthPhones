@@ -15,17 +15,17 @@ router.post(
             .isLength({ min: 4 }),
         body('dir', 'Formato incorrecto')
             .isLength({ min: 4 }),
-        body('phon', 'Formato incorrecto')
+        body('phone', 'Formato incorrecto')
             .trim()
             .isLength({ min: 10 }),
-        body('emai', 'Formato incorrecto')
+        body('email', 'Formato incorrecto')
             .trim()
             .isLength({ min: 4 }),
 
     ],
     validationResults,
     AddEmployee,
-)
+);
 
 router.get('/FindEmployee', FindEmployee);
 router.get('/FindAllEmployee', FindAllEmployee);

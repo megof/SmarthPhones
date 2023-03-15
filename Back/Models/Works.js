@@ -11,18 +11,18 @@ const WorkSchema = new Schema(
             type: String,
             required: true,
             trim: true,
-        }, 
+        },
         id_phone: {
             type: String,
             required: true,
             trim: true,
-        }, 
+        },
         date: {
             type: Date,
             default: Date.now,
             required: true,
             trim: true,
-        }, 
+        },
         Observation: {
             type: String,
             required: true,
@@ -33,4 +33,4 @@ const WorkSchema = new Schema(
     },
 );
 
-export const Work = model('work', WorkSchema);
+export const Works = model('work', WorkSchema);
