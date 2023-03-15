@@ -1,17 +1,17 @@
-import { Marks } from "../Models/Marks.js";
+import { Refs } from "../Models/Ref.js";
 
 // Add Mark
 
-export const AddMark = async (req, res) => {
+export const AddRef = async (req, res) => {
     try {
         const { name } = req.body;
-        const mark = new Marks({ name });
-        await mark.save();
+        const ref = new Refs({ name });
+        await ref.save();
         return res.status(200).json({
-            ok: 'New Mark added'
+            ok: 'New Ref added'
         });
     } catch (error) {
-        console('Error CMark: ', error);
+        console('Error CRef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -20,18 +20,18 @@ export const AddMark = async (req, res) => {
 
 // Find Mark
 
-export const FindMark = async (req, res) => {
+export const FindRef = async (req, res) => {
     const { _id } = req.body;
     try {
-        const mark = await Marks.findById(_id);
-        if (!mark) {
+        const ref = await Refs.findById(_id);
+        if (!ref) {
             return res.status(400).json({
-                error: 'Marks not found'
+                error: 'Refs not found'
             });
         }
-        return res.json(mark);
+        return res.json(ref);
     } catch (error) {
-        console('Error RMark: ', error);
+        console('Error RRef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -40,20 +40,20 @@ export const FindMark = async (req, res) => {
 
 // All Mark
 
-export const FindAllMark = async (req, res) => {
+export const FindAllRef = async (req, res) => {
     try {
-        const marks = await Marks.find();
-        if (!marks) {
+        const refs = await Refs.find();
+        if (!refs) {
             return res.status(400).json({
-                error: 'No marks registred'
+                error: 'No Refs registred'
             });
         }
         return res.json({
-            marks
+            refs
         });
 
     } catch (error) {
-        console('Error RAMark: ', error);
+        console('Error RARef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
@@ -62,19 +62,19 @@ export const FindAllMark = async (req, res) => {
 
 // Update Mark
 
-export const UpdateMark = async (req, res) => {
+export const UpdateRef = async (req, res) => {
     const { _id, name } = req.body;
     try {
-        const mark = await Marks.findById(_id);
-        if (!mark) {
+        const ref = await Refs.findById(_id);
+        if (!ref) {
             return res.status(400).json({
-                error: "Mark no found, could not be modified"
+                error: "Ref no found, could not be modified"
             });
         }
-        await Marks.findByIdAndUpdate(_id, { name });
-        mark.save();
+        await Refs.findByIdAndUpdate(_id, { name });
+        ref.save();
         return res.json({
-            ok: 'Mark modified'
+            ok: 'Ref modified'
         });
     } catch (error) {
         console('Error UMark: ', error);
@@ -86,21 +86,21 @@ export const UpdateMark = async (req, res) => {
 
 // Delete Mark
 
-export const DeleteMark = async (req, res) => {
+export const DeleteRef = async (req, res) => {
     const _id = req.body;
     try {
-        const mark = await Marks.findById(_id);
-        if (!mark) {
+        const ref = await Refs.findById(_id);
+        if (!ref) {
             return res.status(400).json({
-                error: "Marks with ID: " + _id + " - not found, could not be deleted "
+                error: "Refs with ID: " + _id + " - not found, could not be deleted "
             });
         }
-        await Marks.findByIdAndRemove(_id);
+        await Refs.findByIdAndRemove(_id);
         return res.json({
-            ok: 'Deleted Mark'
+            ok: 'Deleted Ref'
         });
     } catch (error) {
-        console('Error DMark: ', error);
+        console('Error DRef: ', error);
         return res.status(500).json({
             error: 'Server error'
         });
