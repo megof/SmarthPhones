@@ -7,7 +7,20 @@
     <ListaElementos :items="items" class="list"></ListaElementos>
  
 </template>
+<script setup>
+  import { onMounted } from 'vue';
+  import { useMarkApiStore } from '@/store/MarksApi.js';
+  import { storeToRefs } from 'pinia';
 
+  const useMarkApi = useMarkApiStore();
+  let { getMaks, } = useMarkApi;
+  let { marks } = storeToRefs(useMarkApi);
+
+  onMounted(() =>{
+    getMaks()
+    console.log("vue: ", marks);
+  })
+</script>
 <script>
 import ListaElementos from '../components/ListaElementos.vue'
 import { NButton} from 'naive-ui'

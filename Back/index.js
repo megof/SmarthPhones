@@ -6,8 +6,20 @@ import RefRouter from "./Routes/RefRoute.js";
 import EmployeeRouter from "./Routes/EmployeeRoute.js";
 import PhoneRouter from "./Routes/PhoneRoute.js";
 import WorkRouter from "./Routes/WorkRoute.js";
+import cors from 'cors';
 
 const app = express();
+const whiteList = ['http://localhost:8080', '*'];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (whiteList.includes(origin)) {
+            return callback(null, origin);
+        } else {
+            return callback("error cors origin: " + origin + " no autorizado");
+        }
+    }
+}))
 
 app.use(express.json());
 
