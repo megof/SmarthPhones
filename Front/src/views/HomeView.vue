@@ -2,19 +2,19 @@
   <n-carousel autoplay>
     <img
       class="carousel-img"
-      src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
+      src="../assets/pcMesa.jpeg"
     />
     <img
       class="carousel-img"
-      src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
+      src="../assets/portatil.jpeg"
     />
     <img
       class="carousel-img"
-      src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
+      src="../assets/celular.jpg"
     />
     <img
       class="carousel-img"
-      src="../assets/450_1000.jpeg"
+      src="../assets/tablet.jpg"
     />
   </n-carousel>
 </template>
@@ -31,7 +31,12 @@ export default {
 <style scoped>
 .carousel-img {
   width: 100%;
-  max-height: 80vh;
   object-fit: cover;
 }
+
+img {
+  width: 500px;
+  height: 500px;
+}
+
 </style>

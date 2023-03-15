@@ -1,15 +1,15 @@
 <template>
 
-  <n-list>
+  <n-list class="list">
     <n-list-item v-for="(item, index) in items" :key="index">
       {{ item }}
     <n-space justify="end">
-    <n-button size="small">
+    <n-button size="small" strong secondary type="error">
       <n-icon>
         <TrashOutline />
       </n-icon>
     </n-button>
-    <n-button size="small">
+    <n-button size="small" strong secondary type="success">
       <n-icon>
         <CreateOutline />
       </n-icon>
@@ -34,3 +34,12 @@ export default {
   }
 }
 </script>
+<style>
+
+.list {
+  margin: auto 2%;
+  border: 1px solid #42b983;
+  border-radius: 5px;
+  padding: 5px;
+}
+</style>

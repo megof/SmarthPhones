@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Registrar Referencia</h1>
+  </div>  
     <RegistrarElementos :items="items"></RegistrarElementos>
-  </div>
 </template>
 
 <script>

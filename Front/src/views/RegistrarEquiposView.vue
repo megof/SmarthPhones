@@ -1,7 +1,9 @@
 <template>
 
+<h2 class="container">Registrar Equipo</h2>
+
   <n-space vertical>
-         <n-form :model="form" label-width="100px">
+         <n-form :model="form" label-width="100px" class="lists">
       <n-form-item label="Nombre">
         <n-input v-model="form.nombre"></n-input>
       </n-form-item>
@@ -16,7 +18,7 @@
       </n-form-item>
       
       <n-form-item>
-        <n-button type="primary" @click="submitForm">Enviar</n-button>
+        <n-button type="primary" @click="submitForm">Guardar</n-button>
       </n-form-item>
     </n-form>
   </n-space>

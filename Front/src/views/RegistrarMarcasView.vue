@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <h1>Registrar marcas</h1>
+    <div class="container">
+    <h1>Registrar Marcas</h1>
+     </div>
     <RegistrarElementos :items="items"></RegistrarElementos>
-  </div>
+ 
 </template>
 
 <script>
@@ -19,3 +20,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
