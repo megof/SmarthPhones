@@ -1,5 +1,5 @@
 <template>
-  <nv-navbar>
+  <nv-navbar class="navbar navbar-expand-lg navbar-light bg-light">
     <n-space>
     <nv-navbar-item><router-link to="/">Home</router-link></nv-navbar-item>
     <nv-navbar-item><router-link to="/marcas">Marcas</router-link></nv-navbar-item>
