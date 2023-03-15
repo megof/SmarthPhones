@@ -4,7 +4,7 @@
      </div>
     <n-button  class="btn" @click="handleClick" type="primary">Registrar Marca</n-button>
     
-    <ListaElementos :items="items" class="list"></ListaElementos>
+    <ListaElementos :items="marks" class="list"></ListaElementos>
  
 </template>
 <script setup>
@@ -13,12 +13,13 @@
   import { storeToRefs } from 'pinia';
 
   const useMarkApi = useMarkApiStore();
-  let { getMaks, } = useMarkApi;
+  let { getMarks, } = useMarkApi;
   let { marks } = storeToRefs(useMarkApi);
 
   onMounted(() =>{
-    getMaks()
-    console.log("vue: ", marks);
+    getMarks()
+    console.log("vue: ", JSON.stringify(marks));
+
   })
 </script>
 <script>

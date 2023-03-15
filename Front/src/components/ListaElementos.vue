@@ -2,7 +2,7 @@
 
   <n-list class="list">
     <n-list-item v-for="(item, index) in items" :key="index">
-      {{ item }}
+      {{ item.name }}
     <n-space justify="end">
     <n-button size="small" strong secondary type="error">
       <n-icon>

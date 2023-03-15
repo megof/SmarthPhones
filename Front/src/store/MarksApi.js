@@ -30,7 +30,7 @@ export const useMarkApiStore = defineStore('MarkApi', () => {
     }
 
     const getMarks = () => {
-        axios.get(Url + '/FindAllMarks')
+        axios.get(Url + '/FindAllMark')
             .then(res => {
                 marks.value = res.data.marks;
             })
