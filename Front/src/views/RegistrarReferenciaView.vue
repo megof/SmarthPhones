@@ -2,9 +2,14 @@
   <div class="container">
     <h1>Registrar Referencia</h1>
   </div>  
-    <RegistrarElementos :items="items"></RegistrarElementos>
+    <RegistrarElementos :add="addRef"></RegistrarElementos>
 </template>
+<script setup>
+  import { useRefsApiStore } from '@/store/RefsApi';
 
+  const useRefApi = useRefsApiStore();
+  let { addRef } = useRefApi;
+</script>
 <script>
 import RegistrarElementos from '../components/RegistrarAll.vue'
 

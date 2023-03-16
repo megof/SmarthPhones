@@ -87,7 +87,7 @@ export const UpdateRef = async (req, res) => {
 // Delete Ref
 
 export const DeleteRef = async (req, res) => {
-    const _id = req.body;
+    const _id = req.params.id;
     try {
         const ref = await Refs.findById(_id);
         if (!ref) {

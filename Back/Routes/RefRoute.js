@@ -19,6 +19,6 @@ router.post(
 router.get('/FindRef', FindRef);
 router.get('/FindAllRef', FindAllRef);
 router.put('/UpdateRef', UpdateRef);
-router.delete('/DeleteRef', DeleteRef);
+router.delete('/DeleteRef/:id', DeleteRef);
 
 export default router;
