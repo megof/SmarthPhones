@@ -6,11 +6,6 @@
     <ListaElementos :items="references" class="list"></ListaElementos>
  
 </template>
-
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 <script setup>
   import { onMounted } from 'vue';
   import { useRefsApiStore } from '@/store/RefsApi.js';
@@ -22,17 +17,12 @@
 
   onMounted(() =>{
     getRefs()
-<<<<<<< Updated upstream
     console.log("vue: ", JSON.stringify(references));
 
   })
 </script>
-=======
-    console.log("vue: ", references);
-  })
-</script>
+    
 
->>>>>>> Stashed changes
 <script>
 import ListaElementos from '../components/ListaElementos.vue'
 import { NButton} from 'naive-ui'
@@ -43,11 +33,6 @@ export default {
   components: { ListaElementos, NButton },
   data() {
     return {
-<<<<<<< Updated upstream
-      //items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
-=======
-    //  items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
->>>>>>> Stashed changes
     }
   },
     methods: {

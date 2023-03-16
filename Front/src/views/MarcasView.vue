@@ -18,12 +18,10 @@
 
   onMounted(() =>{
     getMarks()
-<<<<<<< Updated upstream
     console.log("vue: ", JSON.stringify(marks));
 
-=======
     console.log("vue: ", marks);
->>>>>>> Stashed changes
+
   })
 </script>
 <script>
