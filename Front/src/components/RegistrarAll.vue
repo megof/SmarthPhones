@@ -30,22 +30,6 @@ export default defineComponent({
     }
   }
 })
-
-//let val = 'as2s3';
-/*export default {
-  name: 'RegistrarElementos',
-  components: { NButton, NSpace, NInput },
-  props: {
-    add: {
-      type: Function
-    }
-  },
-  data(){
-    return{
-      val: ''
-    }
-  }
-}*/
 </script>
 <style>
 .containers {

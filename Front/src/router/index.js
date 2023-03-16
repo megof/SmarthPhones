@@ -33,9 +33,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "asignar" */ '../views/AsignarEquiposView.vue')
   },
   {
-    path: '/actualizar',
+    path: '/actualizar/:id/:mod',
     name: 'actualizar', 
-    component: () => import(/* webpackChunkName: "actualizar" */ '../components/Update.vue')
+    component: () => import(/* webpackChunkName: "actualizar" */ '../components/Update.vue'),
+    props: true
   },
   {
     path: '/actualizarempleado',

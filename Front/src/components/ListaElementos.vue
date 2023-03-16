@@ -9,7 +9,7 @@
         <TrashOutline />
       </n-icon>
     </n-button>
-    <n-button size="small" strong secondary type="success" @click="actualizar">
+    <n-button size="small" strong secondary type="success" @click="actualizar(item._id)">
       <n-icon>
         <CreateOutline />
       </n-icon>
@@ -33,11 +33,16 @@ export default {
     },
     del:{
       type: Function
+    },
+    mod: {
+      type: Function
     }
   },
   methods: {
-    actualizar() {
-      this.$router.push("/actualizar");
+    actualizar(_id) {
+      console.log('asd: '+ this.mod)
+      console.log('das: '+ this.del)
+      this.$router.push({name: 'actualizar', params:{id: _id, mod: this.mod}});
     },
   },
 }

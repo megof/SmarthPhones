@@ -4,7 +4,7 @@
      </div>
     <n-button  class="btn" @click="handleClick" type="primary">Registrar Marca</n-button>
     
-    <ListaElementos :items="marks" :del="delMark" class="list"></ListaElementos>
+    <ListaElementos :items="marks" :del="delMark" :mod="putMark" class="list"></ListaElementos>
  
 </template>
 <script setup>
@@ -13,7 +13,7 @@
   import { storeToRefs } from 'pinia';
 
   const useMarkApi = useMarkApiStore();
-  let { getMarks, delMark} = useMarkApi;
+  let { getMarks, delMark, putMark} = useMarkApi;
   let { marks } = storeToRefs(useMarkApi);
 
   onMounted(() =>{
