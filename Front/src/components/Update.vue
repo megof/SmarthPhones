@@ -23,11 +23,14 @@ export default ({
     },
     _id: {
       type: String
+    },
+    name:{
+      type:String
     }
   },
   data(){
     return{
-      val: '',
+      val: this.name,
     }
   },
   methods:{

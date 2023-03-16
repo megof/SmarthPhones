@@ -69,13 +69,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "registrarequipos" */ '../views/RegistrarEquiposView.vue')
   },
   {
-    path: '/actualizarmarca/:id',
+    path: '/actualizarmarca/:id/:name',
     name: 'actualizarmarca', 
    component: () => import(/* webpackChunkName: "actualizarmarca" */ '../views/UpdateMark.vue'),
    props:true
   },
   {
-    path: '/actualizarreferencia',
+    path: '/actualizarreferencia/:id/:name',
     name: 'actualizarreferencia', 
     component: () => import(/* webpackChunkName: "actualizarreferencia" */ '../views/UpdateReference.vue')
   }
