@@ -5,7 +5,7 @@
     >Registrar Equipo</n-button
   >
 
-   <n-input round placeholder="Buscar" class="bu" autosize>
+   <n-input round placeholder="Buscar" class="bu" autosize  v-model="searchTerm" >
       <template #suffix>
         <n-icon>
       <Search />
@@ -16,7 +16,6 @@
     <n-table striped>
       <thead>
         <tr>
-          <!--name, imei, description, options-->
           <th>Equipo</th>
           <th>Serial</th>
           <th>Descripción</th>
@@ -29,13 +28,32 @@
           <td>{{phones.imei}}</td>
           <td>{{phones.description}}</td>
           <td>
-            <n-space>
+            <n-space justify="center">
               <n-button size="small" strong secondary type="error">
                 <n-icon>
                   <TrashOutline />
                 </n-icon>
               </n-button>
-              <n-button size="small" strong secondary type="success">
+              <n-button size="small" strong secondary type="success" @click="actualizarequipo" >
+                <n-icon>
+                  <CreateOutline />
+                </n-icon>
+              </n-button>
+            </n-space>
+          </td>
+        </tr>
+        <tr v-for="phones in phones" :key="phones.id">
+          <td>juan</td>
+          <td>paredes</td>
+          <td>jasja</td>
+          <td>
+            <n-space justify="center">
+              <n-button size="small" strong secondary type="error">
+                <n-icon>
+                  <TrashOutline />
+                </n-icon>
+              </n-button>
+              <n-button size="small" strong secondary type="success" @click="actualizarequipo" >
                 <n-icon>
                   <CreateOutline />
                 </n-icon>
@@ -90,12 +108,20 @@ export default {
     handleClick() {
       this.$router.push("/registrarequipos");
     },
-  },
-  //   computed: {
-  //   filteredItems() {
-  //     return this.items.filter(item => item.toLowerCase().includes(this.searchTerm.toLowerCase()))
-  //   }
-  // }
+    actualizarequipo() {
+      this.$router.push("/actualizarequipo");
+    },
+  },computed: {
+  filteredItems() {
+    return this.phones.filter(item => {
+      // Accede a las propiedades del objeto y conviértelas a minúsculas para compararlas con el término de búsqueda
+      return item.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             item.imei.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             item.description.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+}
+
 };
 </script>
 

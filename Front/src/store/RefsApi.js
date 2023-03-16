@@ -39,8 +39,6 @@ export const useRefsApiStore = defineStore('RefApi', () => {
 
                 references.value = res.data.refs;
 
-                references.value = res.data.references;
-
             })
             .catch(error => {
                 console.log(error)

@@ -25,7 +25,7 @@
                   <TrashOutline />
                 </n-icon>
               </n-button>
-              <n-button size="small" strong secondary type="success">
+              <n-button size="small" strong secondary type="success" @click="actualizarEmpleado">
                 <n-icon>
                   <CreateOutline />
                 </n-icon>
@@ -46,6 +46,11 @@ export default {
   name: "ListaEmpleados",
   components: { NIcon, NSpace, NTable, TrashOutline, CreateOutline, NButton },
   props: 
-    ['employees']
+    ['employees'],
+  methods: {
+    actualizarEmpleado() {
+      this.$router.push("/actualizarempleado");
+    },
+  },
 };
 </script>
