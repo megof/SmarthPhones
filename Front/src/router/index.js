@@ -33,6 +33,21 @@ const routes = [
     component: () => import(/* webpackChunkName: "asignar" */ '../views/AsignarEquiposView.vue')
   },
   {
+    path: '/actualizar',
+    name: 'actualizar', 
+    component: () => import(/* webpackChunkName: "actualizar" */ '../components/Update.vue')
+  },
+  {
+    path: '/actualizarempleado',
+    name: 'actualizarempleado', 
+    component: () => import(/* webpackChunkName: "actualizarempleado" */ '../views/UpdateEmployee.vue')
+  },
+  {
+    path: '/actualizarequipo',
+    name: 'actualizarequipo', 
+    component: () => import(/* webpackChunkName: "actualizarequipo" */ '../views/UpdatePhone.vue')
+  },
+  {
     path: '/registrarmarcas',
     name: 'registrarmarcas', 
     component: () => import(/* webpackChunkName: "registrarmarcas" */ '../views/RegistrarMarcasView.vue')

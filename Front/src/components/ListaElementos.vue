@@ -9,7 +9,7 @@
         <TrashOutline />
       </n-icon>
     </n-button>
-    <n-button size="small" strong secondary type="success">
+    <n-button size="small" strong secondary type="success" @click="actualizar">
       <n-icon>
         <CreateOutline />
       </n-icon>
@@ -34,7 +34,12 @@ export default {
     del:{
       type: Function
     }
-  }
+  },
+  methods: {
+    actualizar() {
+      this.$router.push("/actualizar");
+    },
+  },
 }
 </script>
 <style>

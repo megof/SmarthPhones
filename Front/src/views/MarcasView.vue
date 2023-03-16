@@ -23,6 +23,8 @@
     getMarks();
     console.log("vue: ", JSON.stringify(marks));
 
+    console.log("vue: ", marks);
+
   })
 </script>
 <script>
@@ -33,7 +35,12 @@ import { NButton} from 'naive-ui'
 export default {
   name: 'MarcasView',
   components: { ListaElementos, NButton },
-  methods: {
+  data() {
+    return {
+   //   items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
+    }
+  },
+    methods: {
     handleClick() {
       this.$router.push('/registrarmarcas')
     }

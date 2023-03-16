@@ -4,9 +4,8 @@
   <n-button @click="handleClick" type="primary" class="btns"
     >Registrar Equipo</n-button
   >
-  <ListaElementos :items="items"></ListaElementos>
 
-   <n-input round placeholder="Buscar" class="bu" autosize>
+   <n-input round placeholder="Buscar" class="bu" autosize  v-model="searchTerm" >
       <template #suffix>
         <n-icon>
       <Search />
@@ -24,18 +23,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
+        <tr v-for="phones in phones" :key="phones.id">
+          <td>{{phones.name}}</td>
+          <td>{{phones.imei}}</td>
+          <td>{{phones.description}}</td>
           <td>
-            <n-space>
+            <n-space justify="center">
               <n-button size="small" strong secondary type="error">
                 <n-icon>
                   <TrashOutline />
                 </n-icon>
               </n-button>
-              <n-button size="small" strong secondary type="success">
+              <n-button size="small" strong secondary type="success" @click="actualizarequipo" >
                 <n-icon>
                   <CreateOutline />
                 </n-icon>
@@ -43,28 +42,54 @@
             </n-space>
           </td>
         </tr>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
-        </tr>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
+        <tr v-for="phones in phones" :key="phones.id">
+          <td>juan</td>
+          <td>paredes</td>
+          <td>jasja</td>
+          <td>
+            <n-space justify="center">
+              <n-button size="small" strong secondary type="error">
+                <n-icon>
+                  <TrashOutline />
+                </n-icon>
+              </n-button>
+              <n-button size="small" strong secondary type="success" @click="actualizarequipo" >
+                <n-icon>
+                  <CreateOutline />
+                </n-icon>
+              </n-button>
+            </n-space>
+          </td>
         </tr>
       </tbody>
     </n-table>
   </div>
 </template>
 
+
+<script setup>
+  import { onMounted } from 'vue';
+  import { usePhoneApiStore } from '@/store/PhoneApi.js';
+  import { storeToRefs } from 'pinia';
+
+  const usePhoneApi = usePhoneApiStore();
+  let { getPhones, } = usePhoneApi;
+  let { phones } = storeToRefs(usePhoneApi);
+
+  onMounted(() =>{
+    getPhones()
+    console.log("vue: ", JSON.stringify(phones));
+
+  })
+</script>
+
 <script>
 import { NSpace, NTable, NButton, NIcon, NInput } from "naive-ui";
 import { TrashOutline, CreateOutline, Search } from "@vicons/ionicons5";
 
 export default {
+  props: 
+    ['phones'],
   name: "EquiposView",
   components: {
     NButton,
@@ -83,12 +108,20 @@ export default {
     handleClick() {
       this.$router.push("/registrarequipos");
     },
-  },
-  //   computed: {
-  //   filteredItems() {
-  //     return this.items.filter(item => item.toLowerCase().includes(this.searchTerm.toLowerCase()))
-  //   }
-  // }
+    actualizarequipo() {
+      this.$router.push("/actualizarequipo");
+    },
+  },computed: {
+  filteredItems() {
+    return this.phones.filter(item => {
+      // Accede a las propiedades del objeto y conviértelas a minúsculas para compararlas con el término de búsqueda
+      return item.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             item.imei.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+             item.description.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
+}
+
 };
 </script>
 

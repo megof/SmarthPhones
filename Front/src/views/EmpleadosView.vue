@@ -1,22 +1,42 @@
 <template>
   <div class="containers">
-    <n-space justify="end">
+    
       <n-layout>
         <h2>Lista de Empleados</h2>
       </n-layout>
-    </n-space>
+    
   </div>
    <n-button @click="handleClick" type="primary" class="btn">Registrar Equipo</n-button>
-  <ListaEmpleados :items="items" class="list"></ListaEmpleados>
+  <div v-for="employees in employees" :key="employees">
+
+  </div>
+  <ListaEmpleados :employees="employees"  class="list"></ListaEmpleados>
 </template>
+
+
+<script setup>
+  import { onMounted } from 'vue';
+  import { useEmployeeApiStore } from '@/store/EmployeesApi.js';
+  import { storeToRefs } from 'pinia';
+
+  const useEmployeeApi = useEmployeeApiStore();
+  let { getEmployees, } = useEmployeeApi;
+  let { employees } = storeToRefs(useEmployeeApi);
+
+  onMounted(() =>{
+    getEmployees()
+    console.log("vue: ", JSON.stringify(employees));
+
+  })
+</script>
 
 <script>
 import ListaEmpleados from "../components/ListaEmpleados.vue";
-import { NButton, NSpace } from "naive-ui";
+import { NButton, } from "naive-ui";
 
 export default {
   name: "EmpleadosView",
-  components: { ListaEmpleados, NButton, NSpace },
+  components: { ListaEmpleados, NButton, },
   data() {
     return {
       // items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
