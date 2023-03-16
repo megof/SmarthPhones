@@ -87,7 +87,7 @@ export const UpdatePhone = async (req, res) => {
 // Delete Phone
 
 export const DeletePhone = async (req, res) => {
-    const _id = req.body;
+    const _id = req.params.id;
     try {
         const phone = await Phones.findById(_id);
         if (!phone) {

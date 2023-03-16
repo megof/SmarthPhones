@@ -6,11 +6,11 @@
       </n-layout>
     
   </div>
-   <n-button @click="handleClick" type="primary" class="btn">Registrar Equipo</n-button>
+   <n-button @click="handleClick" type="primary" class="btn">Registrar Empleado</n-button>
   <div v-for="employees in employees" :key="employees">
 
   </div>
-  <ListaEmpleados :employees="employees"  class="list"></ListaEmpleados>
+  <ListaEmpleados :employees="employees" :del="delEmployee" :mod="putEmployee" class="list"></ListaEmpleados>
 </template>
 
 
@@ -20,7 +20,7 @@
   import { storeToRefs } from 'pinia';
 
   const useEmployeeApi = useEmployeeApiStore();
-  let { getEmployees, } = useEmployeeApi;
+  let { getEmployees, delEmployee, putEmployee } = useEmployeeApi;
   let { employees } = storeToRefs(useEmployeeApi);
 
   onMounted(() =>{
