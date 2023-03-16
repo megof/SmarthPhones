@@ -2,12 +2,19 @@
     <div class="container">
     <h1>Registrar Marcas</h1>
      </div>
-    <RegistrarElementos :items="items"></RegistrarElementos>
+    <RegistrarElementos :add="addMark"></RegistrarElementos>
  
 </template>
 
+
+<script setup>
+  import { useMarkApiStore } from '@/store/MarksApi.js';
+
+  const useMarkApi = useMarkApiStore();
+  let { addMark} = useMarkApi;
+</script>
 <script>
-import RegistrarElementos from '../components/Registrar.vue'
+import RegistrarElementos from '../components/RegistrarAll.vue'
 
 
 export default {

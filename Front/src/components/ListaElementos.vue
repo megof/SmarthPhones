@@ -4,7 +4,7 @@
     <n-list-item v-for="(item, index) in items" :key="index">
       {{ item.name }}
     <n-space justify="end">
-    <n-button size="small" strong secondary type="error">
+    <n-button size="small" strong secondary type="error" @click="del(item._id)">
       <n-icon>
         <TrashOutline />
       </n-icon>
@@ -30,6 +30,9 @@ export default {
     items: {
       type: Array,
       required: true
+    },
+    del:{
+      type: Function
     }
   }
 }

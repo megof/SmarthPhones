@@ -4,7 +4,7 @@
      </div>
     <n-button  class="btn" @click="handleClick" type="primary">Registrar Marca</n-button>
     
-    <ListaElementos :items="marks" class="list"></ListaElementos>
+    <ListaElementos :items="marks" :del="delMark" class="list"></ListaElementos>
  
 </template>
 <script setup>
@@ -13,7 +13,7 @@
   import { storeToRefs } from 'pinia';
 
   const useMarkApi = useMarkApiStore();
-  let { getMarks} = useMarkApi;
+  let { getMarks, delMark} = useMarkApi;
   let { marks } = storeToRefs(useMarkApi);
 
   onMounted(() =>{
@@ -33,12 +33,7 @@ import { NButton} from 'naive-ui'
 export default {
   name: 'MarcasView',
   components: { ListaElementos, NButton },
-  data() {
-    return {
-      items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
-    }
-  },
-    methods: {
+  methods: {
     handleClick() {
       this.$router.push('/registrarmarcas')
     }

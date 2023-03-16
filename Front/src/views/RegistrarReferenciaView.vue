@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import RegistrarElementos from '../components/Registrar.vue'
+import RegistrarElementos from '../components/RegistrarAll.vue'
 
 
 export default {
