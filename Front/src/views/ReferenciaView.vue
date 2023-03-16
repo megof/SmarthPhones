@@ -1,12 +1,28 @@
 <template>
       <div class="containers">
-    <h1>Referencia</h1>
+    <h1>Lista de Referencia</h1>
      </div>
     <n-button @click="handleClick" class="btn" type="primary">Registrar Referencia</n-button>
-    <ListaElementos :items="items" class="list"></ListaElementos>
+    <ListaElementos :items="references" class="list"></ListaElementos>
  
 </template>
 
+
+<script setup>
+  import { onMounted } from 'vue';
+  import { useRefsApiStore } from '@/store/RefsApi.js';
+  import { storeToRefs } from 'pinia';
+
+  const useRefApi = useRefsApiStore();
+  let { getRefs, } = useRefApi;
+  let { references } = storeToRefs(useRefApi);
+
+  onMounted(() =>{
+    getRefs()
+    console.log("vue: ", JSON.stringify(references));
+
+  })
+</script>
 <script>
 import ListaElementos from '../components/ListaElementos.vue'
 import { NButton} from 'naive-ui'
@@ -17,7 +33,7 @@ export default {
   components: { ListaElementos, NButton },
   data() {
     return {
-      items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
+      //items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
     }
   },
     methods: {

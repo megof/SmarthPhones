@@ -2,7 +2,7 @@
   <n-space vertical>
     <n-table striped>
       <thead>
-        <tr>
+        <tr >
           <th>Nombres</th>
           <th>Apellido</th>
           <th>Dirección</th>
@@ -12,12 +12,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
-          <td>marin28c@gmai.com</td>
+        <tr v-for="employees in employees" :key="employees.id">
+          <td>{{employees.name}}</td>
+          <td>{{employees.last}}</td>
+          <td>{{employees.dir}}</td>
+          <td>{{employees.phone}}</td>
+          <td>{{employees.email}}</td>
           <td>
            <n-space>
               <n-button size="small" strong secondary type="error">
@@ -33,20 +33,6 @@
            </n-space>
           </td>
         </tr>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
-          <td>marin28c@gmai.com</td>
-        </tr>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
-          <td>marin28c@gmai.com</td>
-        </tr>
       </tbody>
     </n-table>
   </n-space>
@@ -59,11 +45,7 @@ import { TrashOutline, CreateOutline } from "@vicons/ionicons5";
 export default {
   name: "ListaEmpleados",
   components: { NIcon, NSpace, NTable, TrashOutline, CreateOutline, NButton },
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    },
-  },
+  props: 
+    ['employees']
 };
 </script>

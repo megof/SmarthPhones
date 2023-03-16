@@ -33,6 +33,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "asignar" */ '../views/AsignarEquiposView.vue')
   },
   {
+    path: '/actualizar',
+    name: 'actualizar', 
+    component: () => import(/* webpackChunkName: "actualizar" */ '../components/Update.vue')
+  },
+  {
     path: '/registrarmarcas',
     name: 'registrarmarcas', 
     component: () => import(/* webpackChunkName: "registrarmarcas" */ '../views/RegistrarMarcasView.vue')

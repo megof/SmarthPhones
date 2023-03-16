@@ -4,7 +4,6 @@
   <n-button @click="handleClick" type="primary" class="btns"
     >Registrar Equipo</n-button
   >
-  <ListaElementos :items="items"></ListaElementos>
 
    <n-input round placeholder="Buscar" class="bu" autosize>
       <template #suffix>
@@ -17,6 +16,7 @@
     <n-table striped>
       <thead>
         <tr>
+          <!--name, imei, description, options-->
           <th>Equipo</th>
           <th>Serial</th>
           <th>Descripción</th>
@@ -24,10 +24,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
+        <tr v-for="phones in phones" :key="phones.id">
+          <td>{{phones.name}}</td>
+          <td>{{phones.imei}}</td>
+          <td>{{phones.description}}</td>
           <td>
             <n-space>
               <n-button size="small" strong secondary type="error">
@@ -43,28 +43,35 @@
             </n-space>
           </td>
         </tr>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
-        </tr>
-        <tr>
-          <td>LUIS</td>
-          <td>Marin</td>
-          <td>carrera 21</td>
-          <td>12605</td>
-        </tr>
       </tbody>
     </n-table>
   </div>
 </template>
+
+
+<script setup>
+  import { onMounted } from 'vue';
+  import { usePhoneApiStore } from '@/store/PhoneApi.js';
+  import { storeToRefs } from 'pinia';
+
+  const usePhoneApi = usePhoneApiStore();
+  let { getPhones, } = usePhoneApi;
+  let { phones } = storeToRefs(usePhoneApi);
+
+  onMounted(() =>{
+    getPhones()
+    console.log("vue: ", JSON.stringify(phones));
+
+  })
+</script>
 
 <script>
 import { NSpace, NTable, NButton, NIcon, NInput } from "naive-ui";
 import { TrashOutline, CreateOutline, Search } from "@vicons/ionicons5";
 
 export default {
+  props: 
+    ['phones'],
   name: "EquiposView",
   components: {
     NButton,
