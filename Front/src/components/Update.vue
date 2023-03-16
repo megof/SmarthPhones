@@ -1,11 +1,10 @@
 <template>
 
-<h2 class="container">Actualizar Nombre</h2>
 <div class="containers">
     
 <n-space>
-  <n-input placeholder="Actualizar dato" v-model:value="val"></n-input>
-  <n-button strong secondary type="success" @click="save">Guardar</n-button>
+  <n-input placeholder="Actualizar Dato" v-model:value="val"></n-input>
+  <n-button strong secondary type="success" @click="save(_id)">Guardar</n-button>
 </n-space>
 </div>
 </template>
@@ -13,33 +12,27 @@
 <script>
 
 import { NButton, NSpace, NInput } from 'naive-ui';
-import { defineComponent } from 'vue';
 
-export default defineComponent({
+
+export default ({
   name: 'ActualizarDatos',
   components: { NButton, NSpace, NInput },
-  props: {
-    items: {
-      type: String,
-      required: true
-    },
-    id:{
-      type: String
-    },
-    mod: {
+ props: {
+    put: {
       type: Function
+    },
+    _id: {
+      type: String
     }
   },
   data(){
     return{
-      val: ''
+      val: '',
     }
   },
   methods:{
-    save(){
-      console.log('comoqueno?', this.mod)
-      JSON.parse(this.mod)
-      this.mod(this.id, this.val);
+      save(id) {
+        this.put(id, this.val);
     }
   }
 })
