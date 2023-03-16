@@ -13,7 +13,11 @@ export const useRefsApiStore = defineStore('RefApi', () => {
             .then(res =>{
                 Swal.fire(
                     'Aprobado',
+<<<<<<< Updated upstream
                     'Referencia registrada exitosamente.',
+=======
+                    'Marca registrada exitosamente.',
+>>>>>>> Stashed changes
                     'success'
                 );
                 getRefs();
@@ -32,7 +36,11 @@ export const useRefsApiStore = defineStore('RefApi', () => {
     const getRefs = () => {
         axios.get(Url + '/FindAllRef')
             .then(res => {
+<<<<<<< Updated upstream
                 references.value = res.data.refs;
+=======
+                references.value = res.data.references;
+>>>>>>> Stashed changes
             })
             .catch(error => {
                 console.log(error)

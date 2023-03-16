@@ -18,8 +18,12 @@
 
   onMounted(() =>{
     getMarks()
+<<<<<<< Updated upstream
     console.log("vue: ", JSON.stringify(marks));
 
+=======
+    console.log("vue: ", marks);
+>>>>>>> Stashed changes
   })
 </script>
 <script>
@@ -32,7 +36,7 @@ export default {
   components: { ListaElementos, NButton },
   data() {
     return {
-      items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
+   //   items: ['Elemento 5', 'Elemento 2', 'Elemento 3']
     }
   },
     methods: {
