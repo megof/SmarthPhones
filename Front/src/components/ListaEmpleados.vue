@@ -20,7 +20,7 @@
           <td>{{employees.email}}</td>
           <td>
            <n-space>
-              <n-button size="small" strong secondary type="error">
+              <n-button size="small" strong secondary type="error" @click="del(employees._id)">
                 <n-icon>
                   <TrashOutline />
                 </n-icon>
@@ -45,8 +45,18 @@ import { TrashOutline, CreateOutline } from "@vicons/ionicons5";
 export default {
   name: "ListaEmpleados",
   components: { NIcon, NSpace, NTable, TrashOutline, CreateOutline, NButton },
-  props: 
-    ['employees'],
+  props: {
+    employees: {
+      type: Array,
+      required: true
+    },
+    del:{
+      type: Function
+    },
+    mod: {
+      type: Function
+    }
+  },
   methods: {
     actualizarEmpleado() {
       this.$router.push("/actualizarempleado");

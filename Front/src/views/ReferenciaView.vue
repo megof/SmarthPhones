@@ -5,7 +5,7 @@
   <n-button @click="handleClick" class="btn" type="primary"
     >Registrar Referencia</n-button
   >
-  <ListaElementos :items="references" class="list"></ListaElementos>
+  <ListaElementos :items="references" :del="delRef" class="list"></ListaElementos>
 </template>
 <script setup>
 import { onMounted } from "vue";
@@ -13,7 +13,7 @@ import { useRefsApiStore } from "@/store/RefsApi.js";
 import { storeToRefs } from "pinia";
 
 const useRefApi = useRefsApiStore();
-let { getRefs } = useRefApi;
+let { getRefs, delRef } = useRefApi;
 let { references } = storeToRefs(useRefApi);
 
 onMounted(() => {

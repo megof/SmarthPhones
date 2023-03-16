@@ -87,7 +87,7 @@ export const UpdateEmployee = async (req, res) => {
 // Delete Employee
 
 export const DeleteEmployee = async (req, res) => {
-    const _id = req.body;
+    const _id = req.params.id;
     try {
         const employee = await Employees.findById(_id);
         if (!employee) {

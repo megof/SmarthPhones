@@ -30,6 +30,6 @@ router.post(
 router.get('/FindEmployee', FindEmployee);
 router.get('/FindAllEmployee', FindAllEmployee);
 router.put('/UpdateEmployee', UpdateEmployee);
-router.delete('/DeleteEmployee', DeleteEmployee);
+router.delete('/DeleteEmployee/:id', DeleteEmployee);
 
 export default router;

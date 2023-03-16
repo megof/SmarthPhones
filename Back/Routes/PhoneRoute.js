@@ -19,6 +19,6 @@ router.post(
 router.get('/FindPhone', FindPhone);
 router.get('/FindAllPhone', FindAllPhone);
 router.put('/UpdatePhone', UpdatePhone);
-router.delete('/DeletePhone', DeletePhone);
+router.delete('/DeletePhone/:id', DeletePhone);
 
 export default router;

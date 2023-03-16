@@ -39,10 +39,55 @@ export const useEmployeeApiStore = defineStore('EmployeeApi', () => {
             });
     }
 
+
+    const putEmployee = (_id, name) => {
+        axios.put(Url + '/UpdateEmployee' , { _id, name })
+        .then(res => {
+            Swal.fire(
+                'Aprobado',
+                'Empleado modificado exitosamente.',
+                'success'
+            );
+            getEmployees();
+            console.log(res);
+        }
+        )
+        .catch(error => {
+            Swal.fire(
+                'Error',
+                'Por favor verifica la información suministrada ' + error,
+                'error'
+            )
+        });
+    }
+    
+    const delEmployee = (id) => {
+        console.log(id)
+        axios.delete(Url + '/DeleteEmployee/'+ id )
+        .then(res => {
+            Swal.fire(
+                'Aprobado',
+                'Empleado Eliminado exitosamente.',
+                'success'
+            );
+            getEmployees();
+            console.log(res);
+        }
+        )
+        .catch(error => {
+            Swal.fire(
+                'Error',
+                'Por favor verifica la información suministrada ' + error,
+                'error'
+            )
+        });
+    }
     return {
         employees,
         employee,
         addEmployee,
         getEmployees,
+        putEmployee,
+        delEmployee,
     }
 });
