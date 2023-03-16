@@ -87,7 +87,7 @@ export const UpdateMark = async (req, res) => {
 // Delete Mark
 
 export const DeleteMark = async (req, res) => {
-    const _id = req.body;
+    const _id = req.params.id;
     try {
         const mark = await Marks.findById(_id);
         if (!mark) {

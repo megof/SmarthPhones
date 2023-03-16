@@ -13,11 +13,14 @@
   import { storeToRefs } from 'pinia';
 
   const useMarkApi = useMarkApiStore();
-  let { getMarks, } = useMarkApi;
+  let { getMarks} = useMarkApi;
   let { marks } = storeToRefs(useMarkApi);
 
   onMounted(() =>{
-    getMarks()
+    //putMark('6411e070ecf96b41feaf5d3e', 'pruebaweb');
+    //delMark('6411e070ecf96b41feaf5d3e');
+    //addMark('Eliminamepe');
+    getMarks();
     console.log("vue: ", JSON.stringify(marks));
 
   })

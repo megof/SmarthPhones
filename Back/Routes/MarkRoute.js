@@ -19,6 +19,6 @@ router.post(
 router.get('/FindMark', FindMark);
 router.get('/FindAllMark', FindAllMark);
 router.put('/UpdateMark', UpdateMark);
-router.delete('/DeleteMark', DeleteMark);
+router.delete('/DeleteMark/:id', DeleteMark);
 
 export default router;
