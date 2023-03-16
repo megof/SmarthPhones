@@ -29,26 +29,7 @@
           <td>{{phones.description}}</td>
           <td>
             <n-space justify="center">
-              <n-button size="small" strong secondary type="error">
-                <n-icon>
-                  <TrashOutline />
-                </n-icon>
-              </n-button>
-              <n-button size="small" strong secondary type="success" @click="actualizarequipo" >
-                <n-icon>
-                  <CreateOutline />
-                </n-icon>
-              </n-button>
-            </n-space>
-          </td>
-        </tr>
-        <tr v-for="phones in phones" :key="phones.id">
-          <td>juan</td>
-          <td>paredes</td>
-          <td>jasja</td>
-          <td>
-            <n-space justify="center">
-              <n-button size="small" strong secondary type="error">
+              <n-button size="small" strong secondary type="error" @click="delPhone(phones._id)">
                 <n-icon>
                   <TrashOutline />
                 </n-icon>
@@ -73,7 +54,7 @@
   import { storeToRefs } from 'pinia';
 
   const usePhoneApi = usePhoneApiStore();
-  let { getPhones, } = usePhoneApi;
+  let { getPhones, delPhone} = usePhoneApi;
   let { phones } = storeToRefs(usePhoneApi);
 
   onMounted(() =>{

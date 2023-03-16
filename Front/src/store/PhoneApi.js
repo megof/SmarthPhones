@@ -39,10 +39,54 @@ export const usePhoneApiStore = defineStore('PhoneApi', () => {
             });
     }
 
+    const putPhone = (_id, name) => {
+        axios.put(Url + '/UpdatePhone' , { _id, name })
+        .then(res => {
+            Swal.fire(
+                'Aprobado',
+                'Dispositivo modificado exitosamente.',
+                'success'
+            );
+            getPhones();
+            console.log(res);
+        }
+        )
+        .catch(error => {
+            Swal.fire(
+                'Error',
+                'Por favor verifica la información suministrada ' + error,
+                'error'
+            )
+        });
+    }
+    
+    const delPhone = (id) => {
+        console.log(id)
+        axios.delete(Url + '/DeletePhone/'+ id )
+        .then(res => {
+            Swal.fire(
+                'Aprobado',
+                'Dispositivo Eliminado exitosamente.',
+                'success'
+            );
+            getPhones();
+            console.log(res);
+        }
+        )
+        .catch(error => {
+            Swal.fire(
+                'Error',
+                'Por favor verifica la información suministrada ' + error,
+                'error'
+            )
+        });
+    }
     return {
         phones,
         phone,
         addPhone,
         getPhones,
+        putPhone,
+        delPhone,
     }
 });

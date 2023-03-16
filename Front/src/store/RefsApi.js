@@ -16,8 +16,6 @@ export const useRefsApiStore = defineStore('RefApi', () => {
 
                     'Referencia registrada exitosamente.',
 
-                    'Marca registrada exitosamente.',
-
                     'success'
                 );
                 getRefs();
@@ -45,10 +43,55 @@ export const useRefsApiStore = defineStore('RefApi', () => {
             });
     }
 
+    const putRef = (_id, name) => {
+        axios.put(Url + '/UpdateRef' , { _id, name })
+        .then(res => {
+            Swal.fire(
+                'Aprobado',
+                'Referencia modificada exitosamente.',
+                'success'
+            );
+            getRefs();
+            console.log(res);
+        }
+        )
+        .catch(error => {
+            Swal.fire(
+                'Error',
+                'Por favor verifica la información suministrada ' + error,
+                'error'
+            )
+        });
+    }
+    
+    const delRef = (id) => {
+        console.log(id)
+        axios.delete(Url + '/DeleteRef/'+ id )
+        .then(res => {
+            Swal.fire(
+                'Aprobado',
+                'Referencia Eliminada exitosamente.',
+                'success'
+            );
+            getRefs();
+            console.log(res);
+        }
+        )
+        .catch(error => {
+            Swal.fire(
+                'Error',
+                'Por favor verifica la información suministrada ' + error,
+                'error'
+            )
+        });
+    }
+
     return {
         references,
         reference,
         addRef,
         getRefs,
+        putRef,
+        delRef,
     }
 });
