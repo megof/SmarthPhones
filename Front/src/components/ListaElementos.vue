@@ -38,7 +38,7 @@ export default {
   methods: {
   actualizar(_id,name) {
     if (this.$route.path === "/referencia") {
-      this.$router.push("/actualizarreferencia");
+      this.$router.push({name:'actualizarreferencia', params:{id:_id, name: name}});
     } else if (this.$route.path === "/marcas") {
       this.$router.push({name:'actualizarmarca', params:{id:_id, name: name}});
     }

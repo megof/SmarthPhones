@@ -3,7 +3,7 @@
 <div class="containers">
     
 <n-space>
-  <n-input placeholder="Actualizar Dato" v-model:value="val"></n-input>
+  <n-input  v-model:value="val"></n-input>
   <n-button strong secondary type="success" @click="save(_id)">Guardar</n-button>
 </n-space>
 </div>

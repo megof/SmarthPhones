@@ -2,15 +2,15 @@
  <div class="containers">
     <h1>Actualizar Referencia</h1>
      </div> 
-    <ActualizarDatos :put="putMark" :_id="id" :name="name"></ActualizarDatos> 
+    <ActualizarDatos :put="putRef" :_id="id" :name="name"></ActualizarDatos> 
 </template>
 
 <script setup>
 import ActualizarDatos from '../components/Update.vue'
-  import { useMarkApiStore } from '@/store/MarksApi.js';
+import { useRefsApiStore } from '@/store/RefsApi.js';
 
-  const useMarkApi = useMarkApiStore();
-  let { putMark } = useMarkApi;
+  const useRefApi = useRefsApiStore();
+  let { putRef } = useRefApi;
   
 </script>
 

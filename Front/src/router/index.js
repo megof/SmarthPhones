@@ -39,9 +39,10 @@ const routes = [
     props: true
   },
   {
-    path: '/actualizarempleado',
+    path: '/actualizarempleado/:id/:name/:last/:dir/:phone/:email',
     name: 'actualizarempleado', 
-    component: () => import(/* webpackChunkName: "actualizarempleado" */ '../views/UpdateEmployee.vue')
+    component: () => import(/* webpackChunkName: "actualizarempleado" */ '../views/UpdateEmployee.vue'),
+    props:true
   },
   {
     path: '/actualizarequipo',
@@ -77,7 +78,8 @@ const routes = [
   {
     path: '/actualizarreferencia/:id/:name',
     name: 'actualizarreferencia', 
-    component: () => import(/* webpackChunkName: "actualizarreferencia" */ '../views/UpdateReference.vue')
+    component: () => import(/* webpackChunkName: "actualizarreferencia" */ '../views/UpdateReference.vue'),
+    props:true
   }
 
 ]
