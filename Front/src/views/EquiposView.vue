@@ -5,14 +5,23 @@
     >Registrar Equipo</n-button
   >
 
-   <n-input round placeholder="Buscar" class="bu" autosize  v-model="searchTerm" >
-      <template #suffix>
-        <n-icon>
-      <Search />
-    </n-icon>
-      </template>
-    </n-input>
-  <div class="list">
+  <n-input
+    round
+    placeholder="Buscar"
+    class="bu"
+    autosize
+    v-model:value="searchTerm"
+  >
+    <template #suffix>
+      <n-icon>
+        <Search />
+      </n-icon>
+    </template>
+  </n-input>
+  <div class="item error" v-if="searchTerm && !filteredItems().length">
+    <p>No results found!</p>
+  </div>
+  <div class="list" v-else>
     <n-table striped>
       <thead>
         <tr>
@@ -23,18 +32,40 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="phones in phones" :key="phones.id">
-          <td>{{phones.name}}</td>
-          <td>{{phones.imei}}</td>
-          <td>{{phones.description}}</td>
+        <tr v-for="phones in filteredItems()" :key="phones.id">
+          <td>{{ phones.name }}</td>
+          <td>{{ phones.imei }}</td>
+          <td>{{ phones.description }}</td>
           <td>
             <n-space justify="center">
-              <n-button size="small" strong secondary type="error" @click="delPhone(phones._id)">
+              <n-button
+                size="small"
+                strong
+                secondary
+                type="error"
+                @click="delPhone(phones._id)"
+              >
                 <n-icon>
                   <TrashOutline />
                 </n-icon>
               </n-button>
-              <n-button size="small" strong secondary type="success" @click="actualizarequipo(phones._id, phones.name, phones.imei, phones.id_mark, phones.id_ref, phones.description, phones.status)" >
+              <n-button
+                size="small"
+                strong
+                secondary
+                type="success"
+                @click="
+                  actualizarequipo(
+                    phones._id,
+                    phones.name,
+                    phones.imei,
+                    phones.id_mark,
+                    phones.id_ref,
+                    phones.description,
+                    phones.status
+                  )
+                "
+              >
                 <n-icon>
                   <CreateOutline />
                 </n-icon>
@@ -47,23 +78,36 @@
   </div>
 </template>
 
-
 <script setup>
-  import { onMounted } from 'vue';
-  import { usePhoneApiStore } from '@/store/PhoneApi.js';
-  import { storeToRefs } from 'pinia';
+import { onMounted, ref } from "vue";
+import { usePhoneApiStore } from "@/store/PhoneApi.js";
+import { storeToRefs } from "pinia";
 
-  const usePhoneApi = usePhoneApiStore();
-  let { getPhones, delPhone} = usePhoneApi;
-  let { phones } = storeToRefs(usePhoneApi);
+const usePhoneApi = usePhoneApiStore();
+let { getPhones, delPhone } = usePhoneApi;
+let { phones } = storeToRefs(usePhoneApi);
 
-  onMounted(() =>{
-    getPhones();
-    //addPhone('asdasdasdasdasdasdasd',123456789000,'marks.value[0]._id','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd')
-    //console.log(marks.value[0].name)
-    console.log("vue: ", JSON.stringify(phones));
+let searchTerm = ref("");
 
-  })
+function filteredItems() {
+      return phones.value.filter((item) => {
+        // Accede a las propiedades del objeto y conviértelas a minúsculas para compararlas con el término de búsqueda
+        console.log(item.name+'=='+searchTerm.value+'->'+item.name.toLowerCase().includes(searchTerm.value.toLowerCase()))
+        return (
+          item.name.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+          item.imei.toString().toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchTerm.value.toLowerCase())
+        );
+      });
+      //return []
+    }
+
+onMounted(() => {
+  getPhones();
+  //addPhone('asdasdasdasdasdasdasd',123456789000,'marks.value[0]._id','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd')
+  //console.log(marks.value[0].name)
+  console.log("vue: ", JSON.stringify(phones));
+});
 </script>
 
 <script>
@@ -80,7 +124,7 @@ export default {
     NInput,
     TrashOutline,
     CreateOutline,
-    Search
+    Search,
   },
   data() {
     return {};
@@ -90,19 +134,23 @@ export default {
       this.$router.push("/registrarequipos");
     },
     actualizarequipo(_id, name, imei, id_mark, id_ref, description, status) {
-      this.$router.push({name:'actualizarequipo', params:{id: _id, name: name, imei: imei, mark: id_mark, refe: id_ref, description: description, status: status}});
+      this.$router.push({
+        name: "actualizarequipo",
+        params: {
+          id: _id,
+          name: name,
+          imei: imei,
+          mark: id_mark,
+          refe: id_ref,
+          description: description,
+          status: status,
+        },
+      });
     },
-  },computed: {
-  filteredItems() {
-    return this.phones.filter(item => {
-      // Accede a las propiedades del objeto y conviértelas a minúsculas para compararlas con el término de búsqueda
-      return item.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-             item.imei.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-             item.description.toLowerCase().includes(this.searchTerm.toLowerCase());
-    });
-  }
-}
-
+  },
+  computed: {
+    
+  },
 };
 </script>
 
@@ -140,5 +188,24 @@ export default {
   margin-left: 3%;
   margin-bottom: 2%;
 }
-
 </style>
+
+<!--<template>
+   <input type="text" v-model="input" placeholder="Search fruitss..." />
+  <div class="item fruit" v-for="fruit in filteredList()" :key="fruit">
+    <p>{{ fruit }}</p>
+  </div>
+  <div class="item error" v-if="input&&!filteredList().length">
+     <p>No results found!</p>
+  </div>
+</template>
+<script setup>
+import { ref } from "vue";
+let input = ref("");
+const fruits = ["apple", "banana", "orange"];
+function filteredList() {
+  return fruits.filter((fruit) =>
+    fruit.toLowerCase().includes(input.value.toLowerCase())
+  );
+}
+</script>-->

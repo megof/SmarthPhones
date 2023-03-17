@@ -87,9 +87,9 @@ export default{
           value: "Usado"
         }
       ],
-        nombre: '1',
-        serial: '2',
-        descripcion: '3',
+        nombre: '',
+        serial: '',
+        descripcion: '',
     };
   },
   methods:{
