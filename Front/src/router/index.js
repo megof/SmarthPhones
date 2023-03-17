@@ -45,9 +45,10 @@ const routes = [
     props:true
   },
   {
-    path: '/actualizarequipo',
+    path: '/actualizarequipo/:id/:name/:imei/:mark/:refe/:description/:status',
     name: 'actualizarequipo', 
-    component: () => import(/* webpackChunkName: "actualizarequipo" */ '../views/UpdatePhone.vue')
+    component: () => import(/* webpackChunkName: "actualizarequipo" */ '../views/UpdatePhone.vue'),
+    props: true
   },
   {
     path: '/registrarmarcas',
