@@ -8,8 +8,8 @@ export const usePhoneApiStore = defineStore('PhoneApi', () => {
     const phones = ref([]);
     const phone = ref({});
 
-    const addPhone = (name, imei,description) => {
-        axios.post(Url + '/add', { name, imei, description})
+    const addPhone = ( name, imei, id_mark, id_ref, description, status ) => {
+        axios.post(Url + '/add', {  name, imei, id_mark, id_ref, description, status })
             .then(res =>{
                 Swal.fire(
                     'Aprobado',

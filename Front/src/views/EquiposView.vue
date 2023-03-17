@@ -58,7 +58,9 @@
   let { phones } = storeToRefs(usePhoneApi);
 
   onMounted(() =>{
-    getPhones()
+    getPhones();
+    //addPhone('asdasdasdasdasdasdasd',123456789000,'marks.value[0]._id','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd')
+    //console.log(marks.value[0].name)
     console.log("vue: ", JSON.stringify(phones));
 
   })
@@ -69,8 +71,6 @@ import { NSpace, NTable, NButton, NIcon, NInput } from "naive-ui";
 import { TrashOutline, CreateOutline, Search } from "@vicons/ionicons5";
 
 export default {
-  props: 
-    ['phones'],
   name: "EquiposView",
   components: {
     NButton,
