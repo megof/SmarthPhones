@@ -14,9 +14,7 @@ const WorkSchema = new Schema(
         },
         date: {
             type: Date,
-            default: Date.now,
-            required: true,
-            trim: true,
+            default: Date.now(),
         },
         Observation: {
             type: String,
