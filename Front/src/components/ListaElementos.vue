@@ -9,7 +9,7 @@
         <TrashOutline />
       </n-icon>
     </n-button>
-    <n-button size="small" strong secondary type="success" @click="actualizar(item._id)" >
+    <n-button size="small" strong secondary type="success" @click="actualizar(item._id, item.name)" >
       <n-icon>
         <CreateOutline />
       </n-icon>
@@ -36,11 +36,11 @@ export default {
     }
   },
   methods: {
-  actualizar(_id) {
+  actualizar(_id,name) {
     if (this.$route.path === "/referencia") {
-      this.$router.push("/actualizarreferencia");
+      this.$router.push({name:'actualizarreferencia', params:{id:_id, name: name}});
     } else if (this.$route.path === "/marcas") {
-      this.$router.push({name:'actualizarmarca', params:{id:_id}});
+      this.$router.push({name:'actualizarmarca', params:{id:_id, name: name}});
     }
   },
 },

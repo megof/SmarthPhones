@@ -2,8 +2,7 @@
  <div class="containers">
     <h1>Actualizar Marca</h1>
      </div> 
-    <ActualizarDatos :put="putMark" :_id="id"></ActualizarDatos>
- 
+    <ActualizarDatos :put="putMark" :_id="id" :name="name"></ActualizarDatos> 
 </template>
 
 <script setup>
@@ -38,12 +37,9 @@ export default {
   props:{
     id: {
       type: String
-    }
-  },
-
-  methods:{
-    hola(id){
-        console.log(id)
+    },
+    name:{
+        type:String
     }
   }
 }
