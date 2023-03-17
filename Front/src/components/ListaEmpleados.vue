@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="employees in employees" :key="employees.id">
+        <tr v-for="employees in employees" :key="employees._id">
           <td>{{employees.name}}</td>
           <td>{{employees.last}}</td>
           <td>{{employees.dir}}</td>
@@ -25,7 +25,9 @@
                   <TrashOutline />
                 </n-icon>
               </n-button>
-              <n-button size="small" strong secondary type="success" @click="actualizarEmpleado">
+              <n-button size="small" strong secondary type="success" @click="actualizarEmpleado(employees._id, employees.name, employees.last, employees.dir, employees.phone, employees.email)">
+                        <UpdateEmployee :put="putEmployee" />
+
                 <n-icon>
                   <CreateOutline />
                 </n-icon>
@@ -53,13 +55,14 @@ export default {
     del:{
       type: Function
     },
-    mod: {
+    putEmployee: {
       type: Function
     }
   },
   methods: {
-    actualizarEmpleado() {
-      this.$router.push("/actualizarempleado");
+    actualizarEmpleado(_id, name, last, dir, phone, email) {
+      this.$router.push({name:'actualizarempleado', params:{id:_id,name:name, last:last, dir:dir, phone:phone, email:email}});
+
     },
   },
 };

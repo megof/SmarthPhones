@@ -34,7 +34,7 @@
                   <TrashOutline />
                 </n-icon>
               </n-button>
-              <n-button size="small" strong secondary type="success" @click="actualizarequipo" >
+              <n-button size="small" strong secondary type="success" @click="actualizarequipo(phones._id, phones.name, phones.imei, phones.id_mark, phones.id_ref, phones.description, phones.status)" >
                 <n-icon>
                   <CreateOutline />
                 </n-icon>
@@ -58,7 +58,9 @@
   let { phones } = storeToRefs(usePhoneApi);
 
   onMounted(() =>{
-    getPhones()
+    getPhones();
+    //addPhone('asdasdasdasdasdasdasd',123456789000,'marks.value[0]._id','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd','asdasdasdasdasdasdasd')
+    //console.log(marks.value[0].name)
     console.log("vue: ", JSON.stringify(phones));
 
   })
@@ -69,8 +71,6 @@ import { NSpace, NTable, NButton, NIcon, NInput } from "naive-ui";
 import { TrashOutline, CreateOutline, Search } from "@vicons/ionicons5";
 
 export default {
-  props: 
-    ['phones'],
   name: "EquiposView",
   components: {
     NButton,
@@ -89,8 +89,8 @@ export default {
     handleClick() {
       this.$router.push("/registrarequipos");
     },
-    actualizarequipo() {
-      this.$router.push("/actualizarequipo");
+    actualizarequipo(_id, name, imei, id_mark, id_ref, description, status) {
+      this.$router.push({name:'actualizarequipo', params:{id: _id, name: name, imei: imei, mark: id_mark, refe: id_ref, description: description, status: status}});
     },
   },computed: {
   filteredItems() {

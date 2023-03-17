@@ -40,8 +40,8 @@ export const useEmployeeApiStore = defineStore('EmployeeApi', () => {
     }
 
 
-    const putEmployee = (_id, name) => {
-        axios.put(Url + '/UpdateEmployee' , { _id, name })
+    const putEmployee = (_id, name, last, dir, phone, email) => {
+        axios.put(Url + '/UpdateEmployee' , { _id, name, last, dir, phone, email })
         .then(res => {
             Swal.fire(
                 'Aprobado',

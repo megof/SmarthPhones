@@ -39,14 +39,16 @@ const routes = [
     props: true
   },
   {
-    path: '/actualizarempleado',
+    path: '/actualizarempleado/:id/:name/:last/:dir/:phone/:email',
     name: 'actualizarempleado', 
-    component: () => import(/* webpackChunkName: "actualizarempleado" */ '../views/UpdateEmployee.vue')
+    component: () => import(/* webpackChunkName: "actualizarempleado" */ '../views/UpdateEmployee.vue'),
+    props:true
   },
   {
-    path: '/actualizarequipo',
+    path: '/actualizarequipo/:id/:name/:imei/:mark/:refe/:description/:status',
     name: 'actualizarequipo', 
-    component: () => import(/* webpackChunkName: "actualizarequipo" */ '../views/UpdatePhone.vue')
+    component: () => import(/* webpackChunkName: "actualizarequipo" */ '../views/UpdatePhone.vue'),
+    props: true
   },
   {
     path: '/registrarmarcas',
@@ -69,15 +71,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "registrarequipos" */ '../views/RegistrarEquiposView.vue')
   },
   {
-    path: '/actualizarmarca/:id',
+    path: '/actualizarmarca/:id/:name',
     name: 'actualizarmarca', 
    component: () => import(/* webpackChunkName: "actualizarmarca" */ '../views/UpdateMark.vue'),
    props:true
   },
   {
-    path: '/actualizarreferencia',
+    path: '/actualizarreferencia/:id/:name',
     name: 'actualizarreferencia', 
-    component: () => import(/* webpackChunkName: "actualizarreferencia" */ '../views/UpdateReference.vue')
+    component: () => import(/* webpackChunkName: "actualizarreferencia" */ '../views/UpdateReference.vue'),
+    props:true
   }
 
 ]
