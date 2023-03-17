@@ -2,7 +2,7 @@
   <h2 class="container">Actualizar Empleado</h2>
 
   <div class="lists">
-    <n-form :model="form" label-width="100px">
+    <n-form label-width="100px">
       <n-form-item label="Nombre">
         <n-input
           v-model:value="names"
@@ -33,7 +33,7 @@
           placeholder="Por favor llenar el campo"
         ></n-input>
       </n-form-item>
-      <n-button type="primary" @click="save(_id, putEmployee)">Guardar
+      <n-button type="primary" @click="save(putEmployee)">Guardar
       </n-button>
     </n-form>
   </div>
@@ -62,7 +62,7 @@ export default {
       type: Function,
     required: true
     },
-    _id: {
+    id: {
       type: String,
     },
     name: {
@@ -83,6 +83,7 @@ export default {
   },
   data() {
     return {
+      ids: this.id,
       names: this.name,
       lasts: this.last,
       dirs: this.dir,
@@ -91,9 +92,8 @@ export default {
     };
   },
   methods: {
-    save(id, md) {
-      console.log(id,+' -'+md)
-      md(id, this.names, this.lasts, this.dirs, this.phones, this.emails);
+    save(md) {
+      md(this.ids, this.names, this.lasts, this.dirs, this.phones, this.emails);
     },
   },
 };
